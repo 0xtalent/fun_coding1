@@ -4,6 +4,11 @@
 
 import requests
 from bs4 import BeautifulSoup
+import lxml
 
 res = requests.get('https://news.v.daum.net/v/20170615203441266')
-print(res.content)
+# print(res.content)
+soup = BeautifulSoup(res.content, "html.parser")
+
+mydata = soup.find('h3')
+print(mydata.get_text())
